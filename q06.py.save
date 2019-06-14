@@ -1,23 +1,21 @@
 ##
-## Imprima una tabla en formato CSV que contenga por cada clave 
-## de la columna 5, la correspondiente cantidad de registros 
-## asociados (filas en el archivo)
+## Por cada clave de la columna 5 (cadena de tres letras), obtenga
+## el valor mas pequeño y el valor mas grande asociado a esa clave.
 ##
-## aaa,13
-## bbb,16
-## ccc,23
-## ddd,23
-## eee,15
-## fff,20
-## ggg,13
-## hhh,16
-## iii,18
-## jjj,18
+## aaa,0,6
+## bbb,4,7
+## ccc,0,1
+## ddd,5,5
+## eee,0,0
+## fff,4,9
+## ggg,3,3
+## hhh,6,8
+## iii,2,7
+## jjj,2,5
 ##
-##
-# Guarda cada linea del archivo como elemento de una lista
 import pandas as pd
 
+# Guarda cada linea del archivo como elemento de una lista
 file = open('data.csv', 'r').readlines()
 
 # Quitamos el ultimo caracter de cada elemento
@@ -43,12 +41,14 @@ result = {}
 for element in data:
 	for el in element[4]:
 		aux = el.split(':')
-		result[aux[0]] = 0
+		result[aux[0]] = []
 
 for element in data:
 	for el in element[4]:
 		aux = el.split(':')
-		result[aux[0]] += 1
+		result[aux[0]].append(int(aux[1]))
 
-print(pd.Series(result).sort_index().to_csv(header=False),end='')
+n result:
+	df = pd.Series(result)
+	print (df.max)
 

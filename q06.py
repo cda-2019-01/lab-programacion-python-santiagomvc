@@ -13,3 +13,11 @@
 ## iii,2,7
 ## jjj,2,5
 ##
+import pandas as pd
+
+df = pd.read_csv('data.csv', sep = '	', names=list(range(1,6)))
+values = df[5].str.split(',').tolist()
+values_flat = [i for j in values for i in j] 
+ser = pd.Series(values_flat)
+df_vals = pd.DataFrame(ser.str.split(':').tolist())
+print(df_vals.groupby(0)[1].agg(['min','max']).to_csv(header = False), end='')

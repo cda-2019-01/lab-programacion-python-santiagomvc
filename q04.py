@@ -14,3 +14,8 @@
 ## 11,2
 ## 12,3
 ##
+import pandas as pd
+df = pd.read_csv('data.csv', sep = '\t', names=list(range(1,6)))
+df[3] = pd.to_datetime(df[3].str[0:7], format='%Y-%m').dt.month  
+df[3] = df[3].astype(str).str.zfill(2)
+print(df.groupby(3)[2].apply(lambda x: len(x)).to_csv(header=False),end='')

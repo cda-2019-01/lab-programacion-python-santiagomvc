@@ -7,3 +7,7 @@
 ## D,7,1
 ## E,9,1
 ##
+import pandas as pd
+df = pd.read_csv('data.csv', sep = '\t', names=list(range(1,6)))
+temp = df.groupby(1)[2].agg(['max','min'])
+print(temp.to_csv(header=False),end='')

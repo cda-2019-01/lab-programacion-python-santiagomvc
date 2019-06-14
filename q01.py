@@ -1,3 +1,1 @@
-##
-## Imprima la suma de la segunda columna.
-##
+#### Imprima la suma de la segunda columna.##import pandas as pddf = pd.read_csv('data.csv', sep = '\t', names=list(range(1,6)))print(df[2].sum())

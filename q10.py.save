@@ -50,5 +50,6 @@ for element in data:
 		aux = el.split(':')
 		result[aux[0]] += 1
 
-print(pd.Series(result).sort_index().to_csv(header=False),end='')
+df = pd.DataFrame(result)
+rint(df.to_csv())
 
